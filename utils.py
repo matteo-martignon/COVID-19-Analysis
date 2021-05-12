@@ -1,6 +1,6 @@
 import pandas as pd
 
-def get_dfsettimanale_from_df(df_t, column, target):
+def get_dfweekly_from_df(df_t, column, target):
     '''
     
     Parameters
@@ -20,9 +20,9 @@ def get_dfsettimanale_from_df(df_t, column, target):
         df_f = df_t[df_t[column]==c].resample('W')[[target]].sum().fillna(0)
         df_f[column]=c
         if i == 0:
-            df_settimanale = df_f.copy()
+            df_weekly = df_f.copy()
             i=1
         else:
-            df_settimanale = df_settimanale.append(df_f)
+            df_weekly = df_weekly.append(df_f)
 
-    return df_settimanale
+    return df_weekly
